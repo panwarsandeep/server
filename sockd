@@ -1,0 +1,24 @@
+#!/bin/sh
+
+SDPATH=/var/socketdaemon
+
+case "$1" in
+  start)
+     cd $SDPATH ; ./socketdaemon
+
+  ;;
+  stop)
+     cd $SDPATH ; sh ./sdstop.sh
+
+  ;;
+  reload|force-reload)
+     cd $SDPATH ; sh ./sdstop.sh
+     cd $SDPATH ; ./socketdaemon
+
+  ;;
+  restart)
+     cd $SDPATH ; sh ./sdstop.sh
+     cd $SDPATH ; ./socketdaemon
+
+  ;;
+esac
